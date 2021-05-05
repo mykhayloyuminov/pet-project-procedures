@@ -1,0 +1,43 @@
+.auth {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/auth-background.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .auth_wrapp {
+    height: 80vh;
+    width: 90vw;
+    background-color: #fff;
+    display: flex;
+
+    .auth_left_wrapp {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../../assets/doctor.jpg");
+      background-size: cover;
+      width: 40%;
+      max-height: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      flex-direction: column;
+      padding: 50px;
+    }
+    .auth_right_wrapp {
+      width: 60%;
+      height: 100%;
+      .sign_in_wrapp {
+        padding: 70px;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      .container_sign_buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+    }
+  }
+}

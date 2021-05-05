@@ -1,0 +1,66 @@
+#root {
+  height: 100vh;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  box-sizing: border-box !important;
+  font-family: "Figgins";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+}
+
+.primaty_button {
+  background: linear-gradient(
+    69.01deg,
+    #4776e6 -18.83%,
+    #8e54e9 117.77%
+  ) !important;
+  color: white;
+  font-family: "Figgins";
+  height: 40px;
+  width: 160px;
+  font-weight: normal;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: 0;
+  cursor: pointer;
+  display: inline-block;
+  min-height: 1em;
+  outline: 0;
+  border: none;
+  vertical-align: baseline;
+  background: #e0e1e2 none;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  margin: 0 0.25em 0 0;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  text-transform: none;
+  text-shadow: none;
+  font-weight: 700;
+  line-height: 1em;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.28571429rem;
+  box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 inset;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: opacity 0.1s ease, background-color 0.1s ease,
+    color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+  -webkit-transition: opacity 0.1s ease, background-color 0.1s ease,
+    color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
+    box-shadow 0.1s ease, background 0.1s ease;
+  will-change: "";
+  -webkit-tap-highlight-color: transparent;
+}
