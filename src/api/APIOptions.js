@@ -10,24 +10,34 @@ class APICaller {
   }
 
   async post(endpoint, data, signIn = false) {
-    console.log(endpoint);
-    console.log(data);
     const url = this.prepareURL(endpoint);
-    console.log(signIn);
     const header = signIn
-      ? { "Content-Type": "application/json", Authorization: signIn }
-      : { "Content-Type": "application/json" };
+      ? {
+          "Content-Type": "application/json",
+          Role: "hospital",
+          Authorization: signIn,
+        }
+      : { "Content-Type": "application/json", Role: "hospital" };
     console.log(header);
     return await fetch(url, {
       method: "Post",
-      header: header,
+      headers: header,
       body: JSON.stringify(data),
     });
   }
 
-  async get(endpoint) {
+  async get(endpoint, header) {
     const url = this.prepareURL(endpoint);
-    return await fetch(url);
+    console.log(url);
+    console.log(header);
+    return await fetch(url, {
+      method: "Get",
+      headers: {
+        "Content-Type": "application/json",
+        Role: "hospital",
+        Authorization: header,
+      },
+    });
   }
 
   prepareURL(endpoint) {

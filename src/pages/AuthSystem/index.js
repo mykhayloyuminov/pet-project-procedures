@@ -14,14 +14,14 @@ const AuthSystemWrapp = (props) => {
   const default_route = (
     <div className="container_sign_buttons">
       <Link to="/sign_up">
-        <button className="primaty_button">Sign up</button>
+        <button className="primary_button">Sign up</button>
       </Link>
       <Link to="/sign_in">
-        <button className="primaty_button">Sign in</button>
+        <button className="primary_button">Sign in</button>
       </Link>{" "}
     </div>
   );
-  return (
+  const content = (
     <div className="auth">
       <div className="auth_wrapp">
         <div className="auth_left_wrapp">
@@ -34,6 +34,11 @@ const AuthSystemWrapp = (props) => {
         </div>
       </div>
     </div>
+  );
+  return window.localStorage.getItem("forHeader") ? (
+    <Redirect to="procedures" />
+  ) : (
+    content
   );
 };
 

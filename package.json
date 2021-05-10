@@ -6,14 +6,21 @@
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+    "base-64": "^1.0.0",
+    "basic-auth-token": "^0.4.2",
     "formik": "^2.2.6",
+    "i18next": "^20.2.2",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-i18next": "^11.8.15",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.1",
+    "websocket": "^1.0.34",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,3 +1,16 @@
+@mixin font-face($font-family, $file-path) {
+  @font-face {
+    font-family: $font-family;
+    src: url("#{$file-path}.otf") format("opentype");
+    font-display: swap;
+  }
+}
+
+@include font-face("Figgins", "./assets/fonts/Figgins");
+@include font-face("FigginsBold", "./assets/fonts/Figgins_Bold");
+@include font-face("FigginsItalic", "./assets/fonts/Figgins_Italic");
+@include font-face("FigginsExtraBold", "./assets/fonts/Figgins_ExtraBold");
+
 #root {
   height: 100vh;
 }
@@ -17,14 +30,26 @@ body {
   line-height: 1.5;
   color: #212529;
 }
+* {
+  box-sizing: border-box;
+}
 
-.primaty_button {
+.error-field {
+  color: #eb5757;
+  font-size: 0.95rem;
+  position: absolute;
+}
+.error-field.ui.input > input {
+  border: 1px solid #f96868;
+  background: rgba(249, 104, 104, 0.1);
+}
+.primary_button {
   background: linear-gradient(
     69.01deg,
     #4776e6 -18.83%,
     #8e54e9 117.77%
   ) !important;
-  color: white;
+  color: white !important;
   font-family: "Figgins";
   height: 40px;
   width: 160px;
@@ -63,4 +88,88 @@ body {
     box-shadow 0.1s ease, background 0.1s ease;
   will-change: "";
   -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: "Figgins";
+}
+a {
+  text-decoration: none;
+}
+h1 {
+  font-family: "FigginsBold";
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.create_procedure_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 100px);
+  .create_procedure_inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  input {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 0.978571em 1em;
+    resize: none !important;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    font-family: "Figgins";
+    font-size: 16px;
+    height: 44px;
+    margin: 0;
+    width: 50%;
+    flex: 1 0 auto;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    text-align: left;
+    line-height: 1.21428571em;
+  }
+}
+
+.eye.large.icon {
+  opacity: 0.5;
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.ui.input {
+  width: 100%;
+  input {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 0.978571em 1em;
+    resize: none !important;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    font-family: "Figgins";
+    font-size: 16px;
+    height: 44px;
+    margin: 0;
+    width: 100%;
+    flex: 1 0 auto;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    text-align: left;
+    line-height: 1.21428571em;
+  }
 }
