@@ -47,7 +47,7 @@ const AuthSystemWrapp = (props) => {
         <div className="auth_right_wrapp">
           {props.children || default_route}
           <div className="language_container">
-            <h2 className="language_header">{t("Language")}</h2>
+            <h2 className="language_header">{t("Language")}:</h2>
             <p
               onClick={() => handleLanguageChange("ua")}
               className={`language_content ${
