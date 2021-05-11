@@ -24,7 +24,15 @@
   .procedures_list_wrapp {
     height: 100%;
     width: 100vw;
-    overflow-y: scroll;
+    overflow-y: auto;
+    .loader_container {
+      position: relative;
+      width: 100%;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   .footer {
     position: fixed;

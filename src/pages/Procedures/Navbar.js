@@ -3,8 +3,10 @@ import { Link, Redirect, withRouter } from "react-router-dom";
 import signOut from "../../assets/sign-out.svg";
 import logo from "../../assets/logo-Toma.png";
 import * as path from "../../constants/routes";
+import { useTranslation } from "react-i18next";
 
 const Navbar = (props) => {
+  const { t } = useTranslation();
   return (
     <div className="header">
       <div className="header_container">
@@ -14,13 +16,20 @@ const Navbar = (props) => {
             style={{ width: "auto", height: "auto" }}
             className="primary_button"
           >
-            Create New Procedure
+            {t("Create New Procedure")}
           </button>
         </Link>
         <Link to="/">
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div
+            onClick={() => {
+              if (window.localStorage.getItem("forHeader")) {
+                window.localStorage.removeItem("forHeader");
+              }
+            }}
+            style={{ display: "flex", alignItems: "center" }}
+          >
             <img src={signOut} alt="" />
-            <span className="header_signout">Sign out</span>
+            <span className="header_signout">{t("Sign out")}</span>
           </div>
         </Link>
       </div>

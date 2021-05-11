@@ -24,9 +24,28 @@
       flex-direction: column;
       padding: 50px;
     }
+
     .auth_right_wrapp {
       width: 60%;
       height: 100%;
+      position: relative;
+      .language_container {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        .language_header {
+          display: inline-block;
+        }
+        .language_content {
+          cursor: pointer;
+          display: inline-block;
+          margin-left: 35px;
+          font-size: 18px;
+        }
+        .bold {
+          font-weight: 600;
+        }
+      }
       .sign_in_wrapp {
         padding: 30px;
         height: 100%;

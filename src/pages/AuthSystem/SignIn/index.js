@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import token from "basic-auth-token";
-
+import { error, loading } from "../../../utils/index";
 import { CustomInput } from "../../../components/Forms/CustomInput";
 import { Button } from "semantic-ui-react";
 import { API } from "../../../api/APIOptions";
@@ -14,6 +14,10 @@ import { useTranslation } from "react-i18next";
 import * as path from "constants/routes";
 
 const SignIn = (props) => {
+  const [signIn, setSignIn] = useState({
+    loading: false,
+    error: false,
+  });
   const { t } = useTranslation();
   const SignupSchema = Yup.object().shape({
     email: Yup.string()
@@ -24,6 +28,7 @@ const SignIn = (props) => {
       .required(t("Password is required!")),
   });
   const handleSubmit = async (form, data) => {
+    setSignIn({ ...signIn, loading: true });
     API.post(
       `${endpointSignIn}/${form.email}`,
       "",
@@ -44,17 +49,25 @@ const SignIn = (props) => {
           );
           window.localStorage.setItem("id", result.data[0].id);
           props.history.push(path.PROCEDURES);
+          setSignIn({ ...signIn, loading: false });
         }
       })
       .catch((e) => {
+        setSignIn({ ...signIn, error: true });
         console.log(e);
       });
   };
 
+  if (signIn.error) {
+    return error;
+  }
+  if (signIn.loading) {
+    return loading;
+  }
   return (
     <AuthSystemWrapp>
       <div className="sign_in_wrapp">
-        <h1>Sign In</h1>
+        <h1>{t("Sign In")}</h1>
         <Formik
           initialValues={{
             email: "admin@admin.com",
@@ -66,7 +79,7 @@ const SignIn = (props) => {
           {({ values, touched, errors, setFieldValue }) => (
             <Form>
               <Field
-                label={"Email"}
+                label={t("Email")}
                 name="email"
                 type="email"
                 component={CustomInput}
@@ -74,11 +87,11 @@ const SignIn = (props) => {
                 value={values.email}
               />
               <Field
-                label={"Password"}
+                label={t("Password")}
                 type="password"
                 name="password"
                 component={CustomInput}
-                placeholder="Your password"
+                placeholder={t("Your password")}
                 value={values.password}
               />
               <div
@@ -89,7 +102,7 @@ const SignIn = (props) => {
                 }}
               >
                 <Button type="submit" className="primary_button">
-                  {"Sign in"}
+                  {t("Sign In")}
                 </Button>
               </div>
             </Form>
@@ -104,8 +117,10 @@ const SignIn = (props) => {
             marginTop: "10px",
           }}
         >
-          <span style={{ fontSize: "14px" }}>Don't have an account?</span>
-          <Link to="sign_up">Sign Up</Link>
+          <span style={{ fontSize: "14px" }}>
+            {t("Don't have an account?")}
+          </span>
+          <Link to="sign_up">{t("Sign Up")}</Link>
         </div>
       </div>
     </AuthSystemWrapp>
