@@ -24,9 +24,9 @@ const SignUp = (props) => {
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const SignupSchema = Yup.object().shape({
-    email: Yup.string()
-      .email(t("E-mail is not valid!"))
-      .required(t("E-mail is required!")),
+    // email: Yup.string()
+    //   .email(t("E-mail is not valid!"))
+    //   .required(t("E-mail is required!")),
     name: Yup.string().required(t("Name is required!")),
     city: Yup.string().required(t("City is required!")),
     country: Yup.string().required(t("Country is required!")),

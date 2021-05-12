@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import ProceduresWrapp from "../index";
 import { useTranslation } from "react-i18next";
 
-let ws;
+let ws = new WebSocket("ws://localhost:8001/");
 const CreateProcedure = () => {
+
   const { t } = useTranslation();
   const [wsDataInputs, setWsDataInputs] = useState({
     name: null,
@@ -17,22 +18,50 @@ const CreateProcedure = () => {
     city: null,
   });
 
+  // const [wsDataInputs, setWsDataInputs] = useState({ time: null });
+  // let ws = ;
+  //   const ws = useRef(null);
+
+  //   useEffect(() => {
+  //     ws.current = new WebSocket("ws://localhost:8080/echo");
+  //     ws.current.onopen = () => console.log("ws opened");
+  //     ws.current.onclose = () => console.log("ws closed");
+
+  //     return () => {
+  //       ws.current.close();
+  //     };
+  //   }, []);
+
+  //   useEffect(() => {
+  //     if (!ws.current) return;
+
+  //     ws.current.onmessage = (e) => {
+  //       const message = JSON.parse(e.data);
+  //       console.log("e", message);
+  //     };
+  //   }, []);
+
+
   const handleOnClick = () => {
-    if (ws) {
+    if (!ws) {
+      console.log("foo")
       return false;
     }
-    ws = new WebSocket("ws://api:8001/ws/vaccines");
     ws.onmessage = function (evt) {
+      console.log(evt)
+
+      var data = JSON.parse(evt.data)
+
       setWsDataInputs({
-        name: evt.data.name,
-        lastName: evt.data.lastName,
-        time: evt.data.time,
-        bDay: evt.data.b_day,
-        country: evt.data.country,
-        passportId: evt.data.passport_id,
-        email: evt.data.email,
-        phone: evt.data.phone,
-        city: evt.data.city,
+        name: data.name,
+        lastName: data.last_name,
+        time: data.time,
+        bDay: data.b_day,
+        country: data.country,
+        passportId:data.passport_id,
+        email: data.email,
+        phone: data.phone,
+        city: data.city,
       });
     };
     return false;
@@ -65,9 +94,9 @@ const CreateProcedure = () => {
           <label>{t("Time")}</label>
           <input disabled="true" value={wsDataInputs.time} />
           <label>{t("Passport ID")}</label>
-          <input disabled="true" value={wsDataInputs.passport_id} />
+          <input disabled="true" value={wsDataInputs.passportId} />
           <label>{t("Birthday")}</label>
-          <input disabled="true" value={wsDataInputs.b_day} />
+          <input disabled="true" value={wsDataInputs.bDay} />
         </div>
         <button onClick={() => handleOnClick()}>Ok</button>
       </div>
