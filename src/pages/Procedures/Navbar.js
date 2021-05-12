@@ -11,14 +11,24 @@ const Navbar = (props) => {
     <div className="header">
       <div className="header_container">
         <img className="header_logo" src={logo} alt="" />
-        <Link to={path.CREATE_PROCEDURE}>
-          <button
-            style={{ width: "auto", height: "auto" }}
-            className="primary_button"
-          >
-            {t("Create New Procedure")}
-          </button>
-        </Link>
+        <div>
+          <Link to={path.PROCEDURES}>
+            <button
+              style={{ width: "auto", height: "auto" }}
+              className="primary_button"
+            >
+              {t("Procedures list")}
+            </button>
+          </Link>
+          <Link to={path.CREATE_PROCEDURE}>
+            <button
+              style={{ width: "auto", height: "auto" }}
+              className="primary_button"
+            >
+              {t("Create New Procedure")}
+            </button>
+          </Link>
+        </div>
         <Link to="/">
           <div
             onClick={() => {

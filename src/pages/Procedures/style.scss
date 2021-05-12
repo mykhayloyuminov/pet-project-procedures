@@ -22,7 +22,7 @@
     }
   }
   .procedures_list_wrapp {
-    height: 100%;
+    height: calc(100% - 106px);
     width: 100vw;
     overflow-y: auto;
     .loader_container {

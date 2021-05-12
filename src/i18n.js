@@ -42,6 +42,8 @@ i18n.use(initReactI18next).init({
         "Load more": "Load more",
         "Subscribe Me in Instagram": "Subscribe Me in Instagram",
         "Create New Procedure": "Create New Procedure",
+        "Create procedure": "Create procedure",
+        "Procedures list": "Procedures list",
         "Sign out": "Sign out",
         "Last Name": "Last Name",
         Email: "Email",
@@ -93,6 +95,8 @@ i18n.use(initReactI18next).init({
         "Load more": "Загрузить еще",
         "Subscribe Me in Instagram": "Подписуйтесь на меня в Instagram",
         "Create New Procedure": "Создать новую процедуру",
+        "Create procedure": "Создать процедуру",
+        "Procedures list": "Лист процедур",
         "Sign out": "Выйти",
         "Last Name": "Фамилия",
         Email: "Почта",
@@ -107,7 +111,7 @@ i18n.use(initReactI18next).init({
     },
     ua: {
       translations: {
-        "Error from backend. Tamara will fix it soon:":
+        "Error from backend. Tamara will fix it soon":
           "Помилка з бекенда. Тамара це скоро виправить",
         "E-mail is not valid!": "Електронна пошта недійсна!",
         "E-mail is required!": "Пошта необхiдна",
@@ -144,6 +148,8 @@ i18n.use(initReactI18next).init({
         "Load more": "Завантажити ще",
         "Subscribe Me in Instagram": "Підпишіться на мене в Instagram",
         "Create New Procedure": "Створити нову процедуру",
+        "Procedures list": "Лист процедур",
+        "Create procedure": "Создати процедуру",
         "Sign out": "Вийти з аккаунта",
         "Last Name": "Прізвище",
         Email: "Пошта",

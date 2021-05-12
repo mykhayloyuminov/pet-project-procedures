@@ -18,7 +18,6 @@ class APICaller {
           Authorization: signIn,
         }
       : { "Content-Type": "application/json", Role: "hospital" };
-    console.log(header);
     return await fetch(url, {
       method: "Post",
       headers: header,
@@ -28,8 +27,6 @@ class APICaller {
 
   async get(endpoint, header) {
     const url = this.prepareURL(endpoint);
-    console.log(url);
-    console.log(header);
     return await fetch(url, {
       method: "Get",
       headers: {

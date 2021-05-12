@@ -60,7 +60,6 @@ const SignUp = (props) => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         if (result.data.id.length) {
           window.localStorage.setItem(
             "forHeader",
@@ -77,7 +76,7 @@ const SignUp = (props) => {
       });
   };
   if (signOut.error) {
-    return error;
+    return error(t);
   }
   if (signOut.loading) {
     return loading;
@@ -88,14 +87,14 @@ const SignUp = (props) => {
         <h1>{t("Sign Up")}</h1>
         <Formik
           initialValues={{
-            email: "",
-            password1: "",
-            password2: "",
-            city: "",
-            country: "",
-            name: "",
-            phone: "",
-            address: "",
+            email: "admin@admin.com",
+            password1: "admin@admin.com",
+            password2: "admin@admin.com",
+            city: "admin@admin.com",
+            country: "admin@admin.com",
+            name: "admin@admin.com",
+            phone: "admin@admin.com",
+            address: "admin@admin.com",
           }}
           onSubmit={(form, data) => handleSubmit(form, data)}
           validationSchema={SignupSchema}

@@ -54,12 +54,11 @@ const SignIn = (props) => {
       })
       .catch((e) => {
         setSignIn({ ...signIn, error: true });
-        console.log(e);
       });
   };
 
   if (signIn.error) {
-    return error;
+    return error(t);
   }
   if (signIn.loading) {
     return loading;

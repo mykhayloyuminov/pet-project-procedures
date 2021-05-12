@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import ProceduresWrapp from "../index";
 import { useTranslation } from "react-i18next";
+import { API } from "../../../api/APIOptions";
+import { detail_procedures } from "../../../constants/config";
 
-let ws = new WebSocket("ws://localhost:8001/");
 const CreateProcedure = () => {
-
+  let ws = new WebSocket("ws://localhost:8001/");
   const { t } = useTranslation();
   const [wsDataInputs, setWsDataInputs] = useState({
     name: null,
@@ -18,55 +19,6 @@ const CreateProcedure = () => {
     city: null,
   });
 
-  // const [wsDataInputs, setWsDataInputs] = useState({ time: null });
-  // let ws = ;
-  //   const ws = useRef(null);
-
-  //   useEffect(() => {
-  //     ws.current = new WebSocket("ws://localhost:8080/echo");
-  //     ws.current.onopen = () => console.log("ws opened");
-  //     ws.current.onclose = () => console.log("ws closed");
-
-  //     return () => {
-  //       ws.current.close();
-  //     };
-  //   }, []);
-
-  //   useEffect(() => {
-  //     if (!ws.current) return;
-
-  //     ws.current.onmessage = (e) => {
-  //       const message = JSON.parse(e.data);
-  //       console.log("e", message);
-  //     };
-  //   }, []);
-
-
-  const handleOnClick = () => {
-    if (!ws) {
-      console.log("foo")
-      return false;
-    }
-    ws.onmessage = function (evt) {
-      console.log(evt)
-
-      var data = JSON.parse(evt.data)
-
-      setWsDataInputs({
-        name: data.name,
-        lastName: data.last_name,
-        time: data.time,
-        bDay: data.b_day,
-        country: data.country,
-        passportId:data.passport_id,
-        email: data.email,
-        phone: data.phone,
-        city: data.city,
-      });
-    };
-    return false;
-  };
-
   useEffect(() => {
     return () => {
       if (ws) {
@@ -74,6 +26,62 @@ const CreateProcedure = () => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (!ws) {
+      return false;
+    }
+    ws.onmessage = function (evt) {
+      var data = JSON.parse(evt.data);
+
+      setWsDataInputs({
+        name: data.name,
+        lastName: data.last_name,
+        time: data.time,
+        bDay: data.b_day,
+        country: data.country,
+        passportId: data.passport_id,
+        email: data.email,
+        phone: data.phone,
+        city: data.city,
+      });
+    };
+    return false;
+  }, []);
+
+  const sendData = () => {
+    const test = {
+      data: {
+        type: "procedures",
+        attributes: {
+          name: wsDataInputs.name,
+          date: wsDataInputs.time,
+        },
+        relationships: {
+          hospital: {
+            data: {
+              id: window.localStorage.getItem("id"),
+              type: "hospitals",
+            },
+          },
+          type_id: {
+            data: {
+              id: "1",
+              type: "types",
+            },
+          },
+          patient: {
+            data: {
+              id: "1",
+              type: "patients",
+            },
+          },
+        },
+      },
+      included: [],
+    };
+    API.post(detail_procedures, test, window.localStorage.getItem("forHeader"));
+  };
 
   return (
     <ProceduresWrapp>
@@ -98,7 +106,13 @@ const CreateProcedure = () => {
           <label>{t("Birthday")}</label>
           <input disabled="true" value={wsDataInputs.bDay} />
         </div>
-        <button onClick={() => handleOnClick()}>Ok</button>
+        <button
+          onClick={() => sendData()}
+          style={{ marginTop: "20px" }}
+          className="primary_button"
+        >
+          {t("Create procedure")}
+        </button>
       </div>
     </ProceduresWrapp>
   );
